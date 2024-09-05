@@ -1,6 +1,8 @@
 class SudokuSolver {
 
   validate(puzzleString) {
+    return puzzleString.length === 81 
+        && puzzleString.split('').every(el => isFinite(el) || el ==='.');
   }
 
   checkRowPlacement(puzzleString, row, column, value) {
