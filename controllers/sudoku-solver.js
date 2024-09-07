@@ -1,8 +1,11 @@
 class SudokuSolver {
 
   validate(puzzleString) {
-    return puzzleString.length === 81 
-        && puzzleString.split('').every(el => isFinite(el) || el ==='.');
+    if ( puzzleString.length === 81 
+        && puzzleString.split('').every(el => isFinite(el) || el ==='.')) return 'valid';
+    else if (!puzzleString.split('').every(el => isFinite(el) || el ==='.')) return 'Invalid characters in puzzle'
+    else return 'Expected puzzle to be 81 characters long';
+     
   }
 
   checkRowPlacement(puzzleString, row, column, value) {
@@ -30,7 +33,7 @@ class SudokuSolver {
   }
 
   solve(puzzleString) {
-    if (!this.validate(puzzleString)) return false;
+    if (this.validate(puzzleString) !== 'valid') return false;
     let solutions = [puzzleString];
     let result = false;
     let checkPlacement = (puzzleString, row, column, value) => {

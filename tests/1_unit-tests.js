@@ -11,17 +11,17 @@ let shortPuzzle='1.5..2.2.7.2..5.....9..1....8.2.3674.3.7.2..9.47...8..1..16....
 suite('Unit Tests', () => {
     //#1
     test('Valid puzzle string', function() {
-        assert.isTrue(solver.validate(validPuzzle));
+        assert.equal(solver.validate(validPuzzle), 'valid');
     });
 
     //#2
     test('Puzzle string with invalid characters', function() {
-        assert.isFalse(solver.validate(invalidPuzzle));
+        assert.equal(solver.validate(invalidPuzzle), 'Invalid characters in puzzle');
     });
 
     //#3
     test('Not 81 characters string', function() {
-        assert.isFalse(solver.validate(shortPuzzle));
+        assert.equal(solver.validate(shortPuzzle), 'Expected puzzle to be 81 characters long');
     });
 
     //#4
