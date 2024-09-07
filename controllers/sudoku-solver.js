@@ -56,6 +56,14 @@ class SudokuSolver {
       }
     }
 
+    solutions.forEach(el => {
+      if (!el.includes('.')) result = el;
+    })
+    for (let i=0; i < result.length; i++) {
+      if (!checkPlacement(result, getRow(i), getCol(i), result[i])) return false;
+    }
+    return result
+
     function getValues(puzzleString, index) {
       let result = []
       for (let i = 1; i <= 9; i++) {
@@ -72,10 +80,7 @@ class SudokuSolver {
       return index % 9;
     }
 
-    solutions.forEach(el => {
-      if (!el.includes('.')) result = el;
-    })
-    return result
+
   }
 }
 

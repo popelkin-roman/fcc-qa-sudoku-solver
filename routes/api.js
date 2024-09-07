@@ -35,7 +35,7 @@ module.exports = function (app) {
         respond = {error: solver.validate(puzzle)}
       } else {
         let conflicts = []
-        if (! solver.checkRowPlacement(puzzle, row, column, value)) conflicts.push('row');
+        if (!solver.checkRowPlacement(puzzle, row, column, value)) conflicts.push('row');
         if (!solver.checkColPlacement(puzzle, row, column, value)) conflicts.push('column');
         if (!solver.checkRegionPlacement(puzzle, row, column, value)) conflicts.push('region');
         if ( conflicts.length === 0 ) respond = {valid: true}
