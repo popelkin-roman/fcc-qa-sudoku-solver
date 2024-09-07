@@ -27,7 +27,10 @@ class SudokuSolver {
     let startRow = Math.floor(row/3)*3
     let startCol = Math.floor(column/3)*3
     for (let i = 0; i < 3; i++) {
-      testRegion += puzzleString.slice(9*(startRow+i) + startCol, 9*(startRow+i) + startCol + 3)
+      let currentRow = startRow + i;
+      if (currentRow == row) testRegion += puzzleString.slice(9*currentRow + startCol, 9*currentRow + column) + 
+                                           puzzleString.slice(9*currentRow + column + 1, 9*currentRow + startCol + 3)
+      else testRegion += puzzleString.slice(9*currentRow + startCol, 9*currentRow + startCol + 3)
     }
     return !testRegion.includes(value);
   }
